@@ -1,0 +1,46 @@
+<!-- home.component.html -->
+
+<div class="container">
+    <header>
+      <h1>Welcome to Your Task Manager</h1>
+      <p>Stay organized and get things done!</p>
+    </header>
+  
+    <main>
+      <section class="features">
+        <div class="feature">
+          <i class="fas fa-tasks"></i>
+          <h2>Manage Tasks</h2>
+          <p>Effortlessly organize and keep track of your tasks.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-clock"></i>
+          <h2>Stay Productive</h2>
+          <p>Set deadlines and priorities to boost your productivity.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <h2>Complete with Confidence</h2>
+          <p>Mark tasks as complete and celebrate your achievements.</p>
+        </div>
+      </section>
+      <div *ngIf="!isLoggedIn(); else elseBlock">
+        <section #loggedOut class="cta">
+            <h2>Get Started Today!</h2>
+            <p>Sign in or create an account to start managing your tasks.</p>
+            <a routerLink="/login" class="btn">Sign In</a>
+            <a routerLink="/register" class="btn btn-secondary">Sign Up</a>
+          </section>
+      </div>
+      <ng-template #elseBlock>
+        <section class="cta">
+          <h2>Get Started Today!</h2>
+          <p>Create or manage your tasks right here.</p>
+          <a routerLink="/login" class="btn">Go To Tasks</a>
+          <a routerLink="/register" class="btn btn-secondary">Create Tasks</a>
+        </section>
+      </ng-template>
+
+    </main>
+  </div>
+  
