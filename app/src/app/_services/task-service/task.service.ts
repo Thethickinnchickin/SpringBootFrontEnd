@@ -19,7 +19,6 @@ export class TaskService {
   private getHeaders(): HttpHeaders | null {
     if (this.document.defaultView && this.document.defaultView.localStorage) {
       const token = localStorage.getItem(this.tokenKey);
-      console.log(token)
       if (token) {
         return new HttpHeaders({
           'Content-Type': 'application/json',
@@ -28,9 +27,6 @@ export class TaskService {
       }
     }
 
-    // return new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    // });
     return null;
   }
   private fetchingTasks = false;
@@ -55,11 +51,23 @@ export class TaskService {
   }
 
   createTask(task: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/tasks`, task, { headers: this.headers });
+    const headers = this.getHeaders();
+    if (this.deletingTasks || !headers) {
+      // Prevent concurrent requests
+      return new Observable;
+    }
+    return this.http.post<any>(`${this.apiUrl}/tasks`, task, { headers }).pipe();
   }
 
-  updateTask(taskId: number, task: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/tasks/${taskId}`, task, { headers: this.headers });
+  updateTask(taskId: number, task: any): Observable<any>  {
+    const headers = this.getHeaders();
+    if (this.deletingTasks || !headers) {
+      // Prevent concurrent requests
+      console.log("NO good")
+      return new Observable;
+    }
+    console.log("YES")
+    return this.http.put<any>(`${this.apiUrl}/tasks/${taskId}`, task, { headers }).pipe();
   }
 
   deleteTask(taskId: number): Observable<any> | null {  

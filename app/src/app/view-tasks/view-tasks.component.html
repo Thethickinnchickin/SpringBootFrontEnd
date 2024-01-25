@@ -1,15 +1,16 @@
-
 <div class="container">
-    <h2>Your Tasks</h2>
-    <div class="task-cards">
-      <div *ngFor="let task of tasks" class="task-card">
-        <h3>{{ task.title }}</h3>
-        <p>{{ task.id }}</p>
-        <div class="task-actions">
-          <button (click)="editTask(task)">Edit</button>
-          <button (click)="deleteTask(task)">Delete</button>
-        </div>
+  <button mat-button class="create-task-button" (click)="openCreateTaskDialog()">Create Task +</button>
+  <h2>Your Tasks</h2>
+  <div class="task-cards">
+    <div *ngFor="let task of tasks" class="task-card">
+      <h3>{{ task.title }}</h3>
+      <p>{{ task.description }}</p>
+      <h4>Priority: <span [style.color]="getPriorityColor(task.priority)">{{ task.priority }}</span></h4>
+      <p>{{ task.dueDate | date: 'longDate' }} at {{ task.dueDate | date: 'shortTime' }}</p>
+      <div class="task-actions">
+        <button mat-button (click)="editTask(task)">Edit</button>
+        <button (click)="deleteTask(task)">Delete</button>
       </div>
     </div>
   </div>
-  
+</div>

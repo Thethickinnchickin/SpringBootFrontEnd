@@ -14,8 +14,6 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
 
-    // auth.service.ts
-    // ...
 
     return new Observable((observer: Observer<any>) => {
       fetch(`${this.apiUrl}/auth/login`, {
@@ -26,6 +24,7 @@ export class AuthService {
         body: JSON.stringify(loginData),
       })
         .then(response => {
+          console.log("FUGGGG")
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
@@ -33,6 +32,7 @@ export class AuthService {
         })
         .then(data => {
           try {
+            
             const jsonData = JSON.parse(data);
             localStorage.setItem('user_token', jsonData.token);
             observer.next(jsonData);
@@ -87,7 +87,7 @@ export class AuthService {
   }
 
   // Set the authentication token in local storage
-  setAuthToken(token: string): void {
+  public setAuthToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
 

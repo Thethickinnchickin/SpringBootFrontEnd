@@ -9,6 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ViewTasksComponent } from './view-tasks/view-tasks.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskEditComponent } from './task-edit/task-edit.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+
+
 
 @NgModule({
   declarations: [
@@ -16,17 +21,20 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ViewTasksComponent
+    ViewTasksComponent,
+    TaskEditComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())  // Uncomment this line
+    provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent]
 })

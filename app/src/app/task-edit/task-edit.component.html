@@ -1,0 +1,36 @@
+<!-- task-edit.component.html -->
+<div class="edit-dialog">
+  <h2>Edit Task</h2>
+  <form (ngSubmit)="onSave()">
+      <!-- Add your form fields for editing the task -->
+      <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" [(ngModel)]="data.task.title" required>
+      </div>
+
+      <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" [(ngModel)]="data.task.description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due Date and Time:</label>
+        <input type="datetime-local" id="dueDate" name="dueDate" [(ngModel)]="data.task.dueDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>Priority:</label>
+        <div class="priority-buttons">
+          <button type="button" id="Low" class="priority Low" (click)="setPriority('Low')">Low</button>
+          <button type="button" id="Medium" class="priority Medium" (click)="setPriority('Medium')">Medium</button>
+          <button type="button" id="High" class="priority High" (click)="setPriority('High')">High</button>
+        </div>
+        <input type="hidden" name="priority" [(ngModel)]="data.task.priority" required>
+      </div>
+      
+
+      <div class="form-actions">
+          <button mat-button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+          <button mat-button type="submit">Save</button>
+      </div>
+  </form>
+</div>

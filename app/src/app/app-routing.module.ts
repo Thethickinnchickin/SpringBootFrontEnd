@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ViewTasksComponent } from './view-tasks/view-tasks.component';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   // Add other routes as needed
