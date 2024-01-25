@@ -28,4 +28,11 @@ export class HomeComponent implements OnInit {
       return false;
     }
   }
+
+  logOut() : void {
+    if(this.authToken) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  }
 }

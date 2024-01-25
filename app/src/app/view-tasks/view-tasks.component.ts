@@ -29,14 +29,17 @@ export class ViewTasksComponent implements OnInit {
   }
 
   editTask(task: any): void {
+    let tempTask = task;
+    console.log(tempTask)
     const dialogRef = this.editDialog.open(TaskEditComponent, {
-      data: { task },
+      data: { task: tempTask },
       disableClose: true // Pass the task data to the dialog
     });
   
     dialogRef.afterClosed().subscribe(result => {
       // Handle the result after the dialog is closed
       console.log('The dialog was closed', result);
+      window.location.reload();
     });
   }
 
@@ -86,7 +89,7 @@ export class ViewTasksComponent implements OnInit {
       case 'Low':
         return '#006400'; // Dark green
       case 'Medium':
-        return '#8B4513'; // Saddle brown
+        return '#B8860B'; // Saddle brown
       case 'High':
         return '#8B0000'; // Dark red
       default:

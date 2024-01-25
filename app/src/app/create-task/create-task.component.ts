@@ -22,14 +22,11 @@ export class CreateTaskComponent {
       next: (result: any) => {
         // Close the dialog on successful update
         this.dialogRef.close();
-        console.log("FAGGG")
       },
       error: (error: any) => {
         if(error.status == 200) {
           this.dialogRef.close();
         }
-        
-        // Handle error if needed
       }
     });
   }

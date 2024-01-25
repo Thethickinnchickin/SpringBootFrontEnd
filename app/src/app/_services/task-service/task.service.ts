@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, catchError, finalize, of, throwError } from 'rxjs';
 import { Task } from '../../_models/task.model';
 import { DOCUMENT } from '@angular/common';
+import { TokenService } from '../token-service/token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,15 @@ export class TaskService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private tokenKey = 'user_token';
 
-  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) {}
+  constructor(private http: HttpClient,
+     @Inject(DOCUMENT) private document: Document,
+     private tokenService: TokenService) {}
 
   private getHeaders(): HttpHeaders | null {
     if (this.document.defaultView && this.document.defaultView.localStorage) {
       const token = localStorage.getItem(this.tokenKey);
       if (token) {
+        this.tokenService.validateToken(token);
         return new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

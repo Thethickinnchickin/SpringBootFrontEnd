@@ -1,6 +1,8 @@
 <!-- home.component.html -->
 
 <div class="container">
+  
+  <button class="btn logout" *ngIf="isLoggedIn();" (click)="logOut()"><h3>Logout</h3></button>
     <header>
       <h1>Welcome to Your Task Manager</h1>
       <p>Stay organized and get things done!</p>
@@ -36,8 +38,7 @@
         <section class="cta">
           <h2>Get Started Today!</h2>
           <p>Create or manage your tasks right here.</p>
-          <a routerLink="/login" class="btn">Go To Tasks</a>
-          <a routerLink="/register" class="btn btn-secondary">Create Tasks</a>
+          <a routerLink="/view-tasks" class="btn">Go To Tasks</a>
         </section>
       </ng-template>
 

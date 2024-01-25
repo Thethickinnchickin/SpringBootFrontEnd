@@ -16,6 +16,7 @@
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: auto;
   }
   
   .task-actions {
@@ -46,8 +47,24 @@
   padding: 8px 12px;
   border-radius: 4px;
   margin-bottom: 10px; /* Adjust the margin as needed */
+  margin-top: 10px;
 }
 
 .create-task-button:hover {
   background-color: #0056b3;
 }
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-bottom: 50px;
+}
+
