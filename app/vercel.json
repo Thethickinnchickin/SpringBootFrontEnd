@@ -1,13 +1,15 @@
 {
-    "version": 2,
-    "public": true,
-    "name": "app",
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/api" }
-    ],
-    "functions": {
-      "api/index.js": {
-        "includeFiles": "dist/app/browser/**"
-      }
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/*",
+      "use": "@vercel/static"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
