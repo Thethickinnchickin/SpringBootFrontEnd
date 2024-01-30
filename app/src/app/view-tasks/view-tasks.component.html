@@ -8,13 +8,17 @@
     <div *ngFor="let task of tasks" class="task-card">
       <h3>{{ task.title }}</h3>
       <p>{{ task.description }}</p>
-      {{task.isCompleted}}
+      
       <h4>Priority: <span [style.color]="getPriorityColor(task.priority)">{{ task.priority }}</span></h4>
       <p>{{ task.dueDate | date: 'longDate' }} at {{ task.dueDate | date: 'shortTime' }}</p>
+      <h4 *ngIf="task.isCompleted" class="completed">Completed</h4>
+      <h4 *ngIf="!task.isCompleted" class="incomplete">Incomplete <button (click)="markComplete(task)" class="mark-btn">Mark As Complete</button></h4>
+
       <div class="task-actions">
         <button mat-button (click)="editTask(task)">Edit</button>
         <button (click)="deleteTask(task)">Delete</button>
       </div>
+      
     </div>
   </div>
 </div>

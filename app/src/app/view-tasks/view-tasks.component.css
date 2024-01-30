@@ -68,3 +68,18 @@
   margin-bottom: 50px;
 }
 
+.mark-btn {
+  background-color: green;
+  font-size: .5rem;
+}
+
+.completed {
+  color: green;
+  font-weight: bolder;
+}
+
+.incomplete {
+  color: red;
+  font-weight: bold;
+}
+

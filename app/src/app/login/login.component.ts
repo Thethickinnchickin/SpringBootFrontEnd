@@ -34,4 +34,23 @@ export class LoginComponent {
 
     this.authService.login(this.username, this.password).subscribe(observer);
   }
+
+  users() {
+    const observer: Observer<any> = {
+      next: (response) => {
+        // Handle successful login
+        console.log('Login successful:', response);
+      },
+      error: (error) => {
+        // Handle login error
+        console.error('Login failed:', error);
+      },
+      complete: () => {
+        // Handle completion if needed
+      },
+    };
+    this.authService.getUsers().subscribe(observer);
+  }
+
+
 }

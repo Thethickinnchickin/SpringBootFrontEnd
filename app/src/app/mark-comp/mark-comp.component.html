@@ -1,0 +1,12 @@
+<!-- task-edit.component.html -->
+<div class="edit-dialog">
+    <h2>Complete Task: {{data.task.title}}</h2>
+    <form (ngSubmit)="markComplete()">
+
+        <div class="form-actions">
+            <button mat-button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+            <button mat-button type="submit">Complete</button>
+        </div>
+    </form>
+  </div>
+  

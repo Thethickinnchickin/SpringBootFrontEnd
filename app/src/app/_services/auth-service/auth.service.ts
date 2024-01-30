@@ -6,7 +6,7 @@ import { Observable, from, Observer } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080'; // Replace with your Spring Boot API URL
+  private apiUrl = 'https://tasksb-bce3af50489a.herokuapp.com'; // Replace with your Spring Boot API URL
   private tokenKey = 'user_token'
 
   constructor() {}
@@ -62,6 +62,38 @@ export class AuthService {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(loginData),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text(); // Use text() instead of json()
+      })
+      .then(data => {
+        try {
+          const jsonData = JSON.parse(data);
+          observer.next(jsonData);
+          observer.complete();
+        } catch (error) {
+          console.error('Failed to parse JSON:', error);
+          observer.error('An error occurred during login.');
+        }
+      })
+      .catch(error => {
+        console.error('Login failed:', error);
+        observer.error(error.message || 'An error occurred during login.');
+      });
+  });
+  }
+
+  getUsers(): Observable<any> {
+
+
+
+
+  return new Observable((observer: Observer<any>) => {
+    fetch(`${this.apiUrl}/auth/users`, {
+      method: 'GET'
     })
       .then(response => {
         if (!response.ok) {

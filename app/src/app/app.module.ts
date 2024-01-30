@@ -12,6 +12,7 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { MarkCompComponent } from './mark-comp/mark-comp.component';
 
 
 
@@ -23,7 +24,8 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     HomeComponent,
     ViewTasksComponent,
     TaskEditComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    MarkCompComponent
   ],
   imports: [
     BrowserModule,

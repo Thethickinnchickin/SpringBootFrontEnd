@@ -4,6 +4,7 @@ import { TaskService } from '../_services/task-service/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskEditComponent } from '../task-edit/task-edit.component';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { MarkCompComponent } from '../mark-comp/mark-comp.component';
 
 
 @Component({
@@ -32,6 +33,21 @@ export class ViewTasksComponent implements OnInit {
     let tempTask = task;
     console.log(tempTask)
     const dialogRef = this.editDialog.open(TaskEditComponent, {
+      data: { task: tempTask },
+      disableClose: true // Pass the task data to the dialog
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle the result after the dialog is closed
+      console.log('The dialog was closed', result);
+      window.location.reload();
+    });
+  }
+
+  markComplete(task: any): void {
+    let tempTask = task;
+    console.log(tempTask)
+    const dialogRef = this.editDialog.open(MarkCompComponent, {
       data: { task: tempTask },
       disableClose: true // Pass the task data to the dialog
     });
